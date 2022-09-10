@@ -1,10 +1,7 @@
-// CPPM5_Homework1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <fstream>
 
-int* read_array_from_file(std::ifstream& fin, int& itemCount)
+int* readArray(std::ifstream& fin, int& itemCount)
 {
 
 	if (!(fin >> itemCount)) {
@@ -30,7 +27,7 @@ int* read_array_from_file(std::ifstream& fin, int& itemCount)
 	return arr;
 }
 
-void array_special_print(std::ofstream& fout, int* arr, int size, int startIndex)
+void arraySpecialPrint(std::ofstream& fout, int* arr, int size, int startIndex)
 {
 	fout << size << std::endl;
 
@@ -57,7 +54,7 @@ int main()
 	}
 
 	int size1, size2;
-	int* arr1 = read_array_from_file(fin, size1);
+	int* arr1 = readArray(fin, size1);
 	if (!arr1)
 	{
 		std::cout << "Не удалось считать данные первого массива из файла '" + inputFileName + "'" << std::endl;
@@ -65,7 +62,7 @@ int main()
 		return 2;
 	}
 
-	int* arr2 = read_array_from_file(fin, size2);
+	int* arr2 = readArray(fin, size2);
 	if (!arr2)
 	{
 		std::cout << "Не удалось считать данные второго массива из файла '" + inputFileName + "'" << std::endl;
@@ -85,14 +82,12 @@ int main()
 		return 3;
 	}
 
-	array_special_print(fout, arr2, size2, size2 - 1);
-	array_special_print(fout, arr1, size1, 1);
+	arraySpecialPrint(fout, arr2, size2, size2 - 1);
+	arraySpecialPrint(fout, arr1, size1, 1);
 
 	std::cout << "Записан файл '" + inputFileName + "'" << std::endl;
 
 	fout.close();
-
-
 
 	return 0;
 }
