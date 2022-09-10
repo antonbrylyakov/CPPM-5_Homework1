@@ -1,0 +1,5 @@
+*.vcxproj.user
+/.vs
+/x64
+/x86
+out.txt
