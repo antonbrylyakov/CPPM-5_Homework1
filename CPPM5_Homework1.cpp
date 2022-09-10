@@ -60,7 +60,7 @@ int main()
 	int* arr1 = read_array_from_file(fin, size1);
 	if (!arr1)
 	{
-		std::cout << "Не удалось считать данные первого массива из файла '" + inputFileName + "'";
+		std::cout << "Не удалось считать данные первого массива из файла '" + inputFileName + "'" << std::endl;
 		fin.close();
 		return 2;
 	}
@@ -68,25 +68,31 @@ int main()
 	int* arr2 = read_array_from_file(fin, size2);
 	if (!arr2)
 	{
-		std::cout << "Не удалось считать данные второго массива из файла '" + inputFileName + "'";
+		std::cout << "Не удалось считать данные второго массива из файла '" + inputFileName + "'" << std::endl;
 		fin.close();
 		return 2;
 	}
 
 	fin.close();
 
+	std::cout << "Прочитаны данные из файла '" + inputFileName + "'" << std::endl;
+
 	std::ofstream fout(outputFileName);
 
 	if (!fout.is_open())
 	{
-		std::cout << "Не удалось открыть для записи файл '" + outputFileName + "'";
+		std::cout << "Не удалось открыть для записи файл '" + outputFileName + "'" << std::endl;
 		return 3;
 	}
 
 	array_special_print(fout, arr2, size2, size2 - 1);
 	array_special_print(fout, arr1, size1, 1);
 
+	std::cout << "Записан файл '" + inputFileName + "'" << std::endl;
+
 	fout.close();
+
+
 
 	return 0;
 }
