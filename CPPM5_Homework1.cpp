@@ -1,11 +1,11 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 
 int* readArray(std::ifstream& fin, int& itemCount)
 {
 
 	if (!(fin >> itemCount)) {
-		// не удалось считать количество элементов
+		// РЅРµ СѓРґР°Р»РѕСЃСЊ СЃС‡РёС‚Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
 		return nullptr;
 	}
 
@@ -17,7 +17,7 @@ int* readArray(std::ifstream& fin, int& itemCount)
 		arr[i++] = item;
 	}
 
-	// не удалось считать все нужные элементы
+	// РЅРµ СѓРґР°Р»РѕСЃСЊ СЃС‡РёС‚Р°С‚СЊ РІСЃРµ РЅСѓР¶РЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 	if (i < itemCount)
 	{
 		delete[] arr;
@@ -49,7 +49,7 @@ int main()
 
 	if (!fin.is_open())
 	{
-		std::cout << "Не удалось открыть файл '" + inputFileName + "'";
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» '" + inputFileName + "'";
 		return 1;
 	}
 
@@ -57,7 +57,7 @@ int main()
 	int* arr1 = readArray(fin, size1);
 	if (!arr1)
 	{
-		std::cout << "Не удалось считать данные первого массива из файла '" + inputFileName + "'" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ СЃС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ РїРµСЂРІРѕРіРѕ РјР°СЃСЃРёРІР° РёР· С„Р°Р№Р»Р° '" + inputFileName + "'" << std::endl;
 		fin.close();
 		return 2;
 	}
@@ -65,27 +65,27 @@ int main()
 	int* arr2 = readArray(fin, size2);
 	if (!arr2)
 	{
-		std::cout << "Не удалось считать данные второго массива из файла '" + inputFileName + "'" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ СЃС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ РІС‚РѕСЂРѕРіРѕ РјР°СЃСЃРёРІР° РёР· С„Р°Р№Р»Р° '" + inputFileName + "'" << std::endl;
 		fin.close();
 		return 2;
 	}
 
 	fin.close();
 
-	std::cout << "Прочитаны данные из файла '" + inputFileName + "'" << std::endl;
+	std::cout << "РџСЂРѕС‡РёС‚Р°РЅС‹ РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р° '" + inputFileName + "'" << std::endl;
 
 	std::ofstream fout(outputFileName);
 
 	if (!fout.is_open())
 	{
-		std::cout << "Не удалось открыть для записи файл '" + outputFileName + "'" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ РґР»СЏ Р·Р°РїРёСЃРё С„Р°Р№Р» '" + outputFileName + "'" << std::endl;
 		return 3;
 	}
 
 	arraySpecialPrint(fout, arr2, size2, size2 - 1);
 	arraySpecialPrint(fout, arr1, size1, 1);
 
-	std::cout << "Записан файл '" + inputFileName + "'" << std::endl;
+	std::cout << "Р—Р°РїРёСЃР°РЅ С„Р°Р№Р» '" + inputFileName + "'" << std::endl;
 
 	fout.close();
 
